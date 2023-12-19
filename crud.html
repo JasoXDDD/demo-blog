@@ -19,22 +19,22 @@
     <label for="nameInput">Name:</label>
     <input type="text" id="nameInput">
     <label for="reviewInput">Review:</label>
-    <input type="text" id="reviewInput">
+    <input type="text" id="priceInput">
     <button id="addBtn">Add Row</button>
     <table id="myTable">
         <tr>
             <th>Name</th>
-            <th>Review</th>
+            <th>Price</th>
             <th>Action</th>
         </tr>
         <tr>
-            <td>John Mortensen</td>
-            <td>Great lesson! Explained UX and CRUD principles as well as usage of jQuery very nicely. +3 indicators! </td>
+            <td>Air Jordan</td>
+            <td>300 </td>
             <td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td>
         </tr>
         <tr>
-            <td>Sean Yeung</td>
-            <td>Very interactive teaching! Covered all the topic but should have made more Taylor Swift references. </td>
+            <td>Yeezy Boost</td>
+            <td>600 </td>
             <td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td>
         </tr>
     </table>
@@ -43,26 +43,26 @@
             // Add Row
             $('#addBtn').on('click', function() {
                 var name = $('#nameInput').val();
-                var review = $('#reviewInput').val();
+                var review = $('#priceInput').val();
                 $('#myTable').append('<tr><td>' + name + '</td><td>' + review + '</td><td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td></tr>');
                 $('table tr:last').hide();
-                $('table tr:last').fadeIn(1000);
+                $('table tr:last').fadeIn(500);
             });
             // Edit Row
             $(document).on('click', '.editBtn', function() {
                 var currentRow = $(this).closest('tr');
-                var name = currentRow.find('td:eq(0)').text();
-                var review = currentRow.find('td:eq(1)').text();
-                $('#nameInput').val(name);
-                $('#reviewInput').val(review);
-                currentRow.remove();
+                currentRow.css("background-color", "yellow"); 
+                currentRow.fadeOut(500);
+                currentRow.find('td:eq(0)').text($('#nameInput').val());
+                currentRow.find('td:eq(1)').text($('#priceInput').val());
+                currentRow.fadeIn(500);
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
-                $(this).closest('tr').fadeOut(1000);
+                $(this).closest('tr').fadeOut(500);
                 setTimeout(function() {
                     $(this).closest('tr').remove();
-                }, 1000);
+                }, 500);
             });
         });
     </script>
