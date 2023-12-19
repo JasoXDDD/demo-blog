@@ -57,8 +57,8 @@
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
-                $(this).closest('tr').fadeOut(2500);
-                $(this).closest('tr').remove().delay(2500);
+                $(this).closest('tr').fadeOut(2500).delay(2500);
+                $(this).closest('tr').remove();
             });
         });
     </script>
