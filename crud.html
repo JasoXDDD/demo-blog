@@ -45,6 +45,8 @@
                 var name = $('#nameInput').val();
                 var review = $('#reviewInput').val();
                 $('#myTable').append('<tr><td>' + name + '</td><td>' + review + '</td><td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td></tr>');
+                $('table tr:last').hide();
+                $('table tr:last').fadeIn(1000);
             });
             // Edit Row
             $(document).on('click', '.editBtn', function() {
@@ -57,10 +59,10 @@
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
-                $(this).closest('tr').fadeOut(2500);
+                $(this).closest('tr').fadeOut(1000);
                 setTimeout(function() {
                     $(this).closest('tr').remove();
-                }, 2500);
+                }, 1000);
             });
         });
     </script>
