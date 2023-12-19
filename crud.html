@@ -56,7 +56,9 @@
                 currentRow.find('td:eq(0)').text($('#nameInput').val());
                 currentRow.find('td:eq(1)').text($('#priceInput').val());
                 currentRow.fadeIn(500);
-                currentRow.css("background-color", "white"); 
+                setTimeout(function() {
+                    currentRow.css("background-color", "white"); 
+                }, 1000);
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
