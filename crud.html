@@ -57,6 +57,7 @@
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
+                $(this).closest('tr').fadeOut(2500);
                 $(this).closest('tr').remove();
             });
         });
