@@ -111,8 +111,10 @@
                 var currentRow = $(this).closest('tr');
                 currentRow.css("background-color", "yellow"); 
                 currentRow.fadeOut(500);
-                currentRow.find('td:eq(0)').text($('#nameInput').val());
-                currentRow.find('td:eq(1)').text($('#priceInput').val());
+                setTimeout(function() {
+                    currentRow.find('td:eq(0)').text($('#nameInput').val());
+                    currentRow.find('td:eq(1)').text($('#priceInput').val());
+                }, 500);
                 currentRow.fadeIn(500);
                 setTimeout(function() {
                     currentRow.css("background-color", "white"); 
