@@ -58,7 +58,9 @@
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
                 $(this).closest('tr').fadeOut(2500);
-                $(this).closest('tr').delay(2500).remove();
+                setTimeout(function() {
+                    $(this).closest('tr').remove();
+                }, 2500);
             });
         });
     </script>
