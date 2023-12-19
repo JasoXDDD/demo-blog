@@ -5,7 +5,7 @@
     <title>jQuery CRUD</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
-        input {
+        .coolinput {
             display: flex;
             flex-direction: column;
             width: fit-content;
@@ -13,7 +13,7 @@
             max-width: 240px;
         }
           
-        input label.text {
+        .coolinput label.text {
             font-size: 0.75rem;
             color: #6E6D70;
             font-weight: 700;
@@ -25,7 +25,7 @@
             width: fit-content;
         }
           
-        input input[type=text].input {
+        .coolinput input[type=text].input {
             padding: 11px 10px;
             font-size: 0.75rem;
             border: 2px #6E6D70 solid;
@@ -33,7 +33,7 @@
             background: #e8e8e8;
         }
           
-        input input[type=text].input:focus {
+        .coolinput input[type=text].input:focus {
             outline: none;
         }
         table {
@@ -68,10 +68,12 @@
 </head>
 <body>
     <h2>jQuery CRUD Demo</h2>
-    <label for="nameInput">Name:</label>
-    <input type="text" id="nameInput">
-    <label for="reviewInput">Price:</label>
-    <input type="text" id="priceInput">
+    <div class="coolinput">
+        <label for="nameInput" class="text">Name:</label>
+        <input type="text" id="nameInput" placeholder="Name of Shoe" class="input">
+        <label for="reviewInput" class="text">Price:</label>
+        <input type="text" id="priceInput" placeholder="Price of Shoe" class="input">
+    </div>
     <button id="addBtn">Add Row</button>
     <table id="myTable">
         <tr>
