@@ -51,11 +51,12 @@
             // Edit Row
             $(document).on('click', '.editBtn', function() {
                 var currentRow = $(this).closest('tr');
-                currentRow.css("background-color", "yellow"); 
+                currentRow.css("background-color", "green"); 
                 currentRow.fadeOut(500);
                 currentRow.find('td:eq(0)').text($('#nameInput').val());
                 currentRow.find('td:eq(1)').text($('#priceInput').val());
                 currentRow.fadeIn(500);
+                currentRow.css("background-color", "white"); 
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
