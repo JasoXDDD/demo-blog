@@ -46,12 +46,16 @@
                 var review = $('#priceInput').val();
                 $('#myTable').append('<tr><td>' + name + '</td><td>' + review + '</td><td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td></tr>');
                 $('table tr:last').hide();
+                $('table tr:last').css("background-color", "light green"); 
                 $('table tr:last').fadeIn(500);
+                setTimeout(function() {
+                    currentRow.css("background-color", "white"); 
+                }, 1000);
             });
             // Edit Row
             $(document).on('click', '.editBtn', function() {
                 var currentRow = $(this).closest('tr');
-                currentRow.css("background-color", "green"); 
+                currentRow.css("background-color", "light yellow"); 
                 currentRow.fadeOut(500);
                 currentRow.find('td:eq(0)').text($('#nameInput').val());
                 currentRow.find('td:eq(1)').text($('#priceInput').val());
@@ -62,9 +66,11 @@
             });
             // Delete Row
             $(document).on('click', '.deleteBtn', function() {
-                $(this).closest('tr').fadeOut(500);
+                var currentRow = $(this).closest('tr');
+                currentRow.css("background-color", "light red");
+                currentRow.fadeOut(500);
                 setTimeout(function() {
-                    $(this).closest('tr').remove();
+                    currentRow.remove();
                 }, 500);
             });
         });
