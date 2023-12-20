@@ -1,0 +1,67 @@
+%%html
+<html>
+<head>
+    <title>Shoes Website</title>
+    <style>
+        .container .navbar ul, ul.shoe-posts, ul.shoe-listings {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+          
+          ul.shoe-listings li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f34454;
+            margin-bottom: 10px;
+            padding: 10px;
+          }
+          
+          .container {
+            font-family: Helvetica, sans-serif;
+          }
+          .container .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #9834db;
+            height: 60px;
+          }
+          .container .navbar ul li {
+            display: inline-block;
+            margin-right: 20px;
+          }
+          .container .content {
+            background-color: #f34454;
+            padding: 20px;
+          }
+          .container .content h1, .container .content h2 {
+            color: #9834db;
+          }
+          .container .content p {
+            color: #9834db;
+          }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Buy Shoes</a></li>
+                <li><a href="#">Sort Shoes</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to our shoes Website!</h1>
+            <h2>Shoes for Sale:</h2>
+            <ul class="shoe-listings">
+                <li>Air Jordan Model 01 - $500</li>
+                <li>Yeezy Boost 350 - $600</li>
+                <li>Air Force 1 Low - $700</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
