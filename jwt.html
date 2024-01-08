@@ -97,8 +97,7 @@
                     },
                     function(data,status){
                         alert(status);
-                    });
-                })
+                    })
                 .done(function(res) {
                     $('tokenSignal').text("Token: Available");
                     localStorage.setItem('jwtToken', res.access_token);
