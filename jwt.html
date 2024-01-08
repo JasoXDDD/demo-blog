@@ -95,8 +95,10 @@
                 } else {
                     $('#authSignal').text("Not Authorized");
                     $('#username').css("background-color", "red");
+                    $('#password').css("background-color", "red");
                     setTimeout(function() {
                         $('#username').css("background-color", "white");
+                        $('#password').css("background-color", "white");
                     }, 500);
                 }
             });
