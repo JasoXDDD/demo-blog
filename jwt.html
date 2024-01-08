@@ -83,6 +83,8 @@
             $('#loginBtn').on('click', function() {
                 var username = $('#username').val();
                 var password = $('#password').val();
+                alert(username);
+                alert(password);
                 if (username=="jaso" && password=="321"){
                     $('tokenSignal').text("Token: Available");
                 } else {
