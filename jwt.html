@@ -90,22 +90,20 @@
                     username="no";
                     password="321";
                 }
-                $http({
-                    url: 'https://zesty-backend-2-0.onrender.com/auth/login',
-                    method: 'POST',
-                    data: {
+                $.post('https://zesty-backend-2-0.onrender.com/auth/login',
+                    {
                         "username": username,
                         "password": password
                     },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    function(data,status){
+                        alert(status);
+                    });
                 })
-                .success(function(res) {
+                .done(function(res) {
                     $('tokenSignal').text("Token: Available");
                     localStorage.setItem('jwtToken', res.access_token);
                 })
-                .catch(function() {
+                .fail(function() {
                     localStorage.removeItem('jwtToken');
                     $('tokenSignal').text("Token: Not Available");
                 });
