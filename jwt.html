@@ -84,22 +84,30 @@
                 var username = $('#username').val();
                 var password = $('#password').val();
                 if (username=="jaso" && password=="321"){
-                    $('#tokenSignal').text("Token: Available");
+                    setTimeout(function() {
+                        $('#tokenSignal').text("Token: Available");
+                    }, 540);
                 } else {
-                    $('#tokenSignal').text("Token: Not Available");
+                    setTimeout(function() {
+                        $('#tokenSignal').text("Token: Not Available");
+                    }, 260);
                 }
             });
             $('#authBtn').on('click', function() {
                 if ($('#tokenSignal').text()=="Token: Available"){
-                    $('#authSignal').text("Authorized");
-                } else {
-                    $('#authSignal').text("Not Authorized");
-                    $('#username').css("background-color", "red");
-                    $('#password').css("background-color", "red");
                     setTimeout(function() {
-                        $('#username').css("background-color", "white");
-                        $('#password').css("background-color", "white");
-                    }, 500);
+                        $('#authSignal').text("Authorized");
+                    }, 420);
+                } else {
+                    setTimeout(function() {
+                        $('#authSignal').text("Not Authorized");
+                        $('#username').css("background-color", "red");
+                        $('#password').css("background-color", "red");
+                        setTimeout(function() {
+                            $('#username').css("background-color", "white");
+                            $('#password').css("background-color", "white");
+                        }, 500);
+                    }, 420);
                 }
             });
         });
