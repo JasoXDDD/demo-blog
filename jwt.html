@@ -87,17 +87,17 @@
                 alert(password=="321");
                 if (username=="jaso" && password=="321"){
                     alert("available");
-                    $('tokenSignal').text("Token: Available");
+                    $('#tokenSignal').text("Token: Available");
                 } else {
                     alert("not available");
-                    $('tokenSignal').text("Token: Not Available");
+                    $('#tokenSignal').text("Token: Not Available");
                 }
             });
             $('#authBtn').on('click', function() {
-                if ($('tokenSignal').text()=="Token: Available"){
-                    $('authSignal').text("Authorized");
+                if ($('#tokenSignal').text()=="Token: Available"){
+                    $('#authSignal').text("Authorized");
                 } else {
-                    $('authSignal').text("Not Authorized");
+                    $('#authSignal').text("Not Authorized");
                 }
             });
         });
