@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JWT</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .coolinput {
             display: flex;
@@ -90,21 +90,23 @@
                     username="no";
                     password="321";
                 }
-                $.post('https://zesty-backend-2-0.onrender.com/auth/login',
-                    {
+                $.ajax({
+                    type: "POST",
+                    url: 'https://zesty-backend-2-0.onrender.com/auth/login',
+                    data: {
                         "username": username,
                         "password": password
                     },
-                    function(data,status){
-                        alert(status);
-                    })
-                .done(function(res) {
-                    $('tokenSignal').text("Token: Available");
-                    localStorage.setItem('jwtToken', res.access_token);
-                })
-                .fail(function() {
-                    localStorage.removeItem('jwtToken');
-                    $('tokenSignal').text("Token: Not Available");
+                    crossDomain: true,
+                    datatype:"json",
+                    success: function(res){
+                        $('tokenSignal').text("Token: Available");
+                        localStorage.setItem('jwtToken', res.access_token);
+                    },
+                    error: function() {
+                        localStorage.removeItem('jwtToken');
+                        $('tokenSignal').text("Token: Not Available");
+                    }
                 });
             });
             $('#authBtn').on('click', function() {
