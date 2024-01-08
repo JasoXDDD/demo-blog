@@ -94,7 +94,10 @@
                     $('#authSignal').text("Authorized");
                 } else {
                     $('#authSignal').text("Not Authorized");
-                    $('#coolinput').focus();
+                    $('#coolinput').css("background-color", "red");
+                    setTimeout(function() {
+                        $('#coolinput').css("background-color", "white");
+                    }, 500);
                 }
             });
         });
