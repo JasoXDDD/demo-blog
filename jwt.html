@@ -86,18 +86,18 @@
                 if (username=="jaso" && password=="321"){
                     setTimeout(function() {
                         $('#tokenSignal').text("Token: Available");
-                    }, 540);
+                    }, 6120);
                 } else {
                     setTimeout(function() {
                         $('#tokenSignal').text("Token: Not Available");
-                    }, 260);
+                    }, 4170);
                 }
             });
             $('#authBtn').on('click', function() {
                 if ($('#tokenSignal').text()=="Token: Available"){
                     setTimeout(function() {
                         $('#authSignal').text("Authorized");
-                    }, 420);
+                    }, 1420);
                 } else {
                     setTimeout(function() {
                         $('#authSignal').text("Not Authorized");
@@ -107,7 +107,7 @@
                             $('#username').css("background-color", "white");
                             $('#password').css("background-color", "white");
                         }, 500);
-                    }, 420);
+                    }, 1420);
                 }
             });
         });
