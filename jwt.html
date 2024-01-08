@@ -84,47 +84,17 @@
                 var username = $('#username').val();
                 var password = $('#password').val();
                 if (username=="jaso" && password=="321"){
-                    username="admin";
-                    password="123";
+                    $('tokenSignal').text("Token: Available");
                 } else {
-                    username="no";
-                    password="321";
+                    $('tokenSignal').text("Token: Not Available");
                 }
-                $.ajax({
-                    type: "POST",
-                    url: 'https://zesty-backend-2-0.onrender.com/auth/login',
-                    data: {
-                        "username": username,
-                        "password": password
-                    },
-                    crossDomain: true,
-                    datatype:"json",
-                    success: function(res){
-                        $('tokenSignal').text("Token: Available");
-                        localStorage.setItem('jwtToken', res.access_token);
-                    },
-                    error: function() {
-                        localStorage.removeItem('jwtToken');
-                        $('tokenSignal').text("Token: Not Available");
-                    }
-                });
             });
             $('#authBtn').on('click', function() {
-                var token=localStorage.getItem('jwtToken');
-                $http({
-                    url: 'https://zesty-backend-2-0.onrender.com/api/whoami',
-                    method: 'GET',
-                    headers: {
-                        'Authorization': "Bearer "+token,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .success(function(res) {
+                if ($('tokenSignal').text()=="Token: Available"){
                     $('authSignal').text("Authorized");
-                })
-                .catch(function() {
+                } else {
                     $('authSignal').text("Not Authorized");
-                });
+                }
             });
         });
     </script>
