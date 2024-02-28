@@ -91,11 +91,17 @@
                 }
             });
             $('#newBtn').on('click', function() {
-                $.ajax({url: "https://wordguesser.stu.nighthawkcodingsociety.com/api/words/new", success: function(result){
-                    id=result[0];
-                    leng=result[1];
-                    $('#wordSignal').text("");
-                }});
+                $.ajax({url: "https://wordguesser.stu.nighthawkcodingsociety.com/api/words/new", 
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                        },
+                        success: function(result){
+                            console.log(result);
+                            id=result[0];
+                            leng=result[1];
+                            $('#wordSignal').text("");
+                        }});      
             });
         });
     </script>
