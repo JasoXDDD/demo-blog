@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JWT</title>
+    <title>Word Guesser</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .coolinput {
@@ -67,48 +67,35 @@
     </style>
 </head>
 <body>
-    <h2>JWT Demo</h2>
+    <h2>Word Guesser</h2>
     <div class="coolinput">
-        <label class="text">Username:</label>
+        <label class="text">Guess:</label>
         <input type="text" id="username" placeholder="jaso" class="input">
-        <label class="text">Password:</label>
-        <input type="text" id="password" placeholder="321" class="input">
     </div>
-    <button id="loginBtn">Login</button>
-    <label class="text" id="tokenSignal">Token: Not Available</label>
-    <button id="authBtn">Authenticate</button>
-    <label class="text" id="authSignal"></label>
+    <button id="guessBtn">Guess</button>
+    <label class="text" id="guessSignal">Past Guesses</label>
+    <button id="newBtn">New Word</button>
+    <label class="text" id="wordSignal">Click to get a word!</label>
     <script>
+        var id = 0;
+        var leng = 0;
         $(document).ready(function() {
-            $('#loginBtn').on('click', function() {
-                var username = $('#username').val();
-                var password = $('#password').val();
-                if (username=="jaso" && password=="321"){
-                    setTimeout(function() {
-                        $('#tokenSignal').text("Token: Available");
-                    }, 6120);
+            $('#guessBtn').on('click', function() {
+                var guess = $('#coolinput').val();
+                if (leng>0&&guess.length==leng){
+                    $.ajax({url: "https://wordguesser.stu.nighthawkcodingsociety.com/api/words/guess/"+id.toString()+"/"+guess, success: function(result){
+                        $('#wordSignal').text($('#wordSignal').text("")+"\n"+result);
+                    }});
                 } else {
-                    setTimeout(function() {
-                        $('#tokenSignal').text("Token: Not Available");
-                    }, 4170);
+                    alert("Please enter a "+leng.toString()+" character long word.")
                 }
             });
-            $('#authBtn').on('click', function() {
-                if ($('#tokenSignal').text()=="Token: Available"){
-                    setTimeout(function() {
-                        $('#authSignal').text("Authorized");
-                    }, 1420);
-                } else {
-                    setTimeout(function() {
-                        $('#authSignal').text("Not Authorized");
-                        $('#username').css("background-color", "red");
-                        $('#password').css("background-color", "red");
-                        setTimeout(function() {
-                            $('#username').css("background-color", "white");
-                            $('#password').css("background-color", "white");
-                        }, 500);
-                    }, 1420);
-                }
+            $('#newBtn').on('click', function() {
+                $.ajax({url: "https://wordguesser.stu.nighthawkcodingsociety.com/api/words/new", success: function(result){
+                    id=result[0];
+                    leng=result[1];
+                    $('#wordSignal').text("");
+                }});
             });
         });
     </script>
